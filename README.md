@@ -36,10 +36,8 @@ sudo setcap cap_net_bind_service=+ep `readlink -f \`which node\``
 
 to see the outputs 
 
-````bash
-
+```bash
 watch -n 0.2 "gpio readall"
-
 ```
 
 
