@@ -7,13 +7,13 @@ A project for motorhomes automation
 at the moment is only a skeleton
 
 
-hardware
+## hardware
 
 raspberry pi zero
 
 esp8266 for sensors
 
-# Install
+## Install
 
 ### raspberry pi 
 
