@@ -45,7 +45,11 @@ watch -n 0.2 "gpio readall"
 
 compile and upload the sample
 
+The sample send some sensor measures to the raspberry after that go to deep sleep for 30 seconds... then it wake up and send again
 
+The Esp8266 in deep sleep use minimum power possible
+
+In deep sleep to wake up the esp8266 you must connect **RST** pin to **D0** 
 
 
 ![interface](https://github.com/6leonardo/rvas/blob/master/interface.png?raw=true)
