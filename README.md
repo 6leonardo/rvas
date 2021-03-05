@@ -52,6 +52,26 @@ The Esp8266 in deep sleep use minimum power possible
 In deep sleep to wake up the esp8266 you must connect **RST** pin to **D0** 
 
 
-![interface](https://github.com/6leonardo/rvas/blob/master/interface.png?raw=true)
+![interface](https://github.com/6leonardo/rvas/blob/master/images/interface.png?raw=true)
+
+
+### esp8266 for load cells
+
+Scale to measure the weight of the gas cylinders
+
+Costruiamo due bilance per pesare le bombole le due bombole del gas...
+
+Si puo comprare le celle di carico oppure due bilancie di basso costo e riciclare la meccanica e le celle di carico delle due bilancie
+
+Per intefacciarsi al sistema facciamo leggere i sensori da un ESP8266 tramite HX711 e usiamo la relativa libreria per interfacciarsi...
+
+Il collegamento dei sensori di carico è visibile nei seguenti due schemi:
+
+![loadcell-1](https://github.com/6leonardo/rvas/blob/master/images/loadCell-1.jpg?raw=true)
+
+![loadcell-2](https://github.com/6leonardo/rvas/blob/master/images/loadCell-2.jpg?raw=true)
+
+
+
 
 
