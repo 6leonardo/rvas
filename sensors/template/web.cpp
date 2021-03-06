@@ -1,10 +1,9 @@
-#include "lib_web.h"
 #include <ESP8266mDNS.h>
-//#include <DNSServer.h>
 #include <ESP8266WebServer.h>
+#include "web.h"
+#include "net.h"
+#include "eeprom.h"
 
-#include "lib_net.h"
-#include "lib_eeprom.h"
 
 #define WEB_PORT 80
 
@@ -25,9 +24,6 @@ void WEB::handleGetNetworks()
 	char buf[512];
 	int sessionId = 0;
 
-	if (!authenticatedOrError(sessionId, true))
-		return;
-
 	NET::getNetworks(buf, sizeof(buf));
 	//in js togliere l'ultimo new line
 	responseTextPlain(buf);
@@ -37,15 +33,12 @@ void WEB::handleSetNetwork()
 {
 	int sessionId = 0;
 
-	if (!authenticatedOrError(sessionId, true))
-		return;
+	strncpy(eeprom.STA_SID, serverWeb.arg("ssid").c_str(), sizeof(eeprom.STA_SID) - 1);
+	strncpy(eeprom.STA_PWD, serverWeb.arg("key").c_str(), sizeof(eeprom.STA_PWD) - 1);
 
-	strncpy(configuration.Access_Point_Name, serverWeb.arg("ssid").c_str(), sizeof(configuration.Access_Point_Name) - 1);
-	strncpy(configuration.Access_Point_Pass, serverWeb.arg("key").c_str(), sizeof(configuration.Access_Point_Pass) - 1);
+	Persistent::saveeeprom();
 
-	Persistent::saveConfiguration();
-
-	if (NET::restart() == WIFI_USER)
+	if (NET::restart() == WIFI_RASPBERRY)
 		responseTextPlain("Connected");
 	else
 		responseTextPlain("KO!");
@@ -53,6 +46,7 @@ void WEB::handleSetNetwork()
 
 void WEB::handleReadInputs()
 {
+	/*
 	int sessionId = 0;
 
 	if (!authenticatedOrError(sessionId))
@@ -66,10 +60,12 @@ void WEB::handleReadInputs()
 			!DIGITAL::read(INPUT_ALLARM_4),
 			!DIGITAL::read(INPUT_PORTA));
 	responseJson(json);
+	*/
 }
 
 void WEB::handleWriteOutput()
 {
+	/*
 	int sessionId = 0;
 
 	if (!authenticatedOrError(sessionId))
@@ -140,6 +136,7 @@ void WEB::handleWriteOutput()
 			}
 		}
 	}
+	*/
 	responseTextPlain("Salvato");
 }
 
@@ -236,7 +233,6 @@ void WEB::setup()
 	serverWeb.on("/get_input.php", handleReadInputs);
 	serverWeb.on("/get_networks.php", handleGetNetworks);
 	serverWeb.on("/set_network.php", handleSetNetwork);
-	serverWeb.on("/get_permitwifi.php", handleGetPermitWifi);
 	serverWeb.on("/xx_upload", HTTP_GET, []() {					
 		if (!handleFileRead("/upload.html"))					 
 			serverWeb.send(404, "text/plain", "404: Not Found");

@@ -1,4 +1,4 @@
-#include "lib_net.h"
+#include "net.h"
 #include <ESP8266mDNS.h>
 #include <ESP8266httpUpdate.h>
 #include <DNSServer.h>
@@ -9,12 +9,12 @@
 
 #define WIFI_ERROR_TIMEOUT (120 * 1000)
 #define DNS_PORT 53
-#define WIFI_CONNECT_TIMEOUT (20 * 1000)
+#define WIFI_CONNECT_TIMEOUT (10 * 1000)
 #define WIFI_OPEN ENC_TYPE_NONE
 
 WiFiUDP ntpUDP;
 DNSServer serverDNS;
-NTPClient timeClient(ntpUDP, "pool.ntp.org", utcOffsetInSeconds);
+NTPClient timeClient(ntpUDP, "pool.ntp.org", eeprom.utcOffsetInSeconds);
 IPAddress AP_netMask(255, 255, 255, 0);
 IPAddress AP_ip(192, 168, 4, 2);
 
@@ -75,9 +75,9 @@ bool NET::connect(char *ssid, char *password)
 
 	macAddress(mac);
 #if defined(HOST_AND_MAC)
-	sprintf(host, "%s_%s", configuration.AP_SID, mac);
+	sprintf(host, "%s_%s", eeprom.AP_SID, mac);
 #else
-	sprintf(host, "%s", configuration.AP_SID);
+	sprintf(host, "%s", eeprom.AP_SID);
 #endif
 	WiFi.mode(WIFI_STA);
 	WiFi.disconnect();
@@ -95,8 +95,13 @@ bool NET::connect(char *ssid, char *password)
 	while (WiFi.status() != WL_CONNECTED && time + WIFI_CONNECT_TIMEOUT > millis())
 	{
 		DEBUG(".");
-		WatchIT(500);
+		yield();
+		WatchIT(250);
 	}
+	
+	if(WiFi.status() != WL_CONNECTED)
+		return false;
+
 	DEBUGF("\nhostname: %s  IP:%s", host, WiFi.localIP().toString().c_str());
 
 	if (MDNS.begin(host))
@@ -108,7 +113,9 @@ bool NET::connect(char *ssid, char *password)
 		DEBUG_LN("Error setting up MDNS responder!");
 	}
 	WatchIT(500);
+#if defined(USE_NTP)
 	timeClient.begin();
+#endif
 	return WiFi.status() == WL_CONNECTED;
 }
 
@@ -118,20 +125,17 @@ bool NET::createHotspot()
 	char host[32];
 	macAddress(mac);
 #if defined(HOST_AND_MAC)
-	sprintf(host, "%s_%s", configuration.AP_SID, mac);
+	sprintf(host, "%s_%s", eeprom.AP_SID, mac);
 #else
-	sprintf(host, "%s", configuration.AP_SID);
+	sprintf(host, "%s", eeprom.AP_SID);
 #endif
 
 	WiFi.disconnect();
 	WiFi.mode(WIFI_AP);
 	WiFi.hostname(host);
 	WiFi.softAPConfig(AP_ip, AP_ip, AP_netMask);
-	WiFi.softAP(host, configuration.AP_PWD);
-	DEBUG("SSID: ");
-	DEBUG_LN(ap);
-	DEBUG("AP Password: ");
-	DEBUG_LN(AP_PASSWORD);
+	WiFi.softAP(host, eeprom.AP_PWD);
+	DEBUGF("SSID: %s PASSWORD: %s\n",host,eeprom.AP_PWD);
 	for (int i = 0; i < 3; i++)
 	{
 		yield();
@@ -139,7 +143,6 @@ bool NET::createHotspot()
 	}
 	DEBUG("IP address: ");
 	DEBUG_LN(WiFi.softAPIP());
-
 	for (int i = 0; i < 3; i++)
 	{
 		yield();
@@ -190,26 +193,32 @@ int NET::internal_setup()
 		WiFi.onEvent(onWiFiEvent, WIFI_EVENT_STAMODE_DISCONNECTED);
 	}
 
-	if(!useAP) 
-		if (connect(configuration.STA_SID, configuration.STA_PWD))
+	if (!useAP) {
+		int count=STA_RETRY;
+		int connected=false;
+		while(!(connected=connect(eeprom.STA_SID, eeprom.STA_PWD)) && --count>0) {
+			yield();
+			WatchIT(100);
+		}
+		if (connected)
 			return wifiStatus = WIFI_RASPBERRY;
-	
-	
-	if(useAP || !AP_ONLY_ON_REQUEST) {
-	DEBUG_LN("create hostspot wlan");
-	if (createHotspot())
-		return wifiStatus = WIFI_HOTSPOT;
-	else
-		return wifiStatus = WIFI_ERROR
+	}
+
+	if (useAP || AP_ON_STA_FAIL)
+	{
+		DEBUG_LN("create hostspot wlan");
+		if (createHotspot())
+			return wifiStatus = WIFI_HOTSPOT;
+		else
+			return wifiStatus = WIFI_ERROR;
 	}
 	return wifiStatus = WIFI_ERROR;
-	
 }
 
 int NET::setup(bool startAP)
 {
 
-	useAP=startAP;
+	useAP = startAP;
 	static bool oneshoot = false;
 	int ret = internal_setup();
 
