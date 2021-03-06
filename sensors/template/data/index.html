@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>La Mia Porta</title>
+    <link href="all.css" rel="stylesheet">
+
+    <style>
+        .table {
+            font-size: 90%
+        }
+        
+        .table .btn {
+            padding: 0rem 0.3rem;
+            font-size: 0.8rem;
+        }
+        
+        .table td,
+        .table th {
+            padding: 0.2rem 0.5rem;
+        }
+        
+        .card-body {
+            padding: 0.50rem 1.25rem;
+        }
+        
+        .progress {
+            height: 0.65rem;
+        }
+        
+        .jumbotron {
+            color: black;
+        }
+        
+        .help_err {
+            color: #e74a3b;
+            font-size: 90%;
+        }
+        
+        .nobr {
+            white-space: no-wrap;
+        }
+        
+        tr.inexec td:first-child {
+            color: black;
+        }
+        
+        .matrix {
+            width: 134px;
+            height: 31px;
+            background-color: #FFF;
+            /*
+            border: 5px ridge gray;
+            border-bottom: 5px groove gray;
+            border-left: 5px groove gray;
+            */
+        }
+        
+        .led-red {
+            cursor: pointer;
+            display: inline-block;
+            margin: 5px;
+            margin-bottom: 0px;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: red;
+            -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 0, 0, .75);
+            -moz-box-shadow: 0px 0px 15px 5px rgba(255, 0, 0, .75);
+            box-shadow: 0px 0px 15px 5px rgba(255, 0, 0, .75);
+        }
+        
+        .led-green {
+            cursor: pointer;
+            display: inline-block;
+            margin: 5px;
+            margin-bottom: 0px;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: rgb(0, 220, 0, 1);
+            -webkit-box-shadow: 0px 0px 15px 5px rgba(0, 220, 0, .75);
+            -moz-box-shadow: 0px 0px 15px 5px rgba(0, 220, 0, .75);
+            box-shadow: 0px 0px 15px 5px rgba(0, 220, 0, .75);
+        }
+        
+        .led-yellow {
+            cursor: pointer;
+            display: inline-block;
+            margin: 5px;
+            margin-bottom: 0px;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: yellow;
+            -webkit-box-shadow: 0px 0px 15px 5px rgba(255, 255, 0, .75);
+            -moz-box-shadow: 0px 0px 15px 5px rgba(255, 255, 0, .75);
+            box-shadow: 0px 0px 15px 5px rgba(255, 255, 0, .75);
+        }
+        
+        .led-blue {
+            cursor: pointer;
+            display: inline-block;
+            margin: 5px;
+            margin-bottom: 0px;
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            background-color: rgb(0, 0, 220, 1);
+            -webkit-box-shadow: 0px 0px 15px 5px rgba(0, 0, 220, .75);
+            -moz-box-shadow: 0px 0px 15px 5px rgba(0, 0, 220, .75);
+            box-shadow: 0px 0px 15px 5px rgba(0, 0, 220, .75);
+        }
+        
+        .off {
+            background-color: #AAA;
+            -webkit-box-shadow: 0px 0px 0px 0px rgba(255, 255, 190, .75);
+            -moz-box-shadow: 0px 0px 0px 0px rgba(255, 255, 190, .75);
+            box-shadow: 0px 0px 0px 0px rgba(255, 255, 190, .75);
+        }
+        
+        #content-wrapper {
+            min-height: 800px;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <nav class="navbar navbar-expand navbar-dark bg-primary  flex-column flex-md-row bd-navbar mb-2">
+                    <a class="navbar-brand" href="#">La Mia Porta</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#" onclick="page.loadDashBoard(this)">Controllo</a>
+                            </li>
+                            <!--
+                            <li class="nav-item d-none" id="have_log">
+                                <a class="nav-link" href="#" onclick="page.loadLog(this)">Log</a>
+                            </li>
+                            -->
+                            <li class="nav-item" id="permitWifi">
+                                <a class="nav-link" href="#" onclick="page.loadWIFI(this)">WIFI</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Utente
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item user-nouser" href="#" onclick="page.login(this)">Accedi</a>
+                                    <div class="dropdown-item user-logged d-none">Utente: <span id="show-user"></span></div>
+                                    <div class="dropdown-item user-logged d-none">Ruolo: <span id="show-admin"></span></div>
+                                    <hr class=" user-logged  d-none" style="height:1px" />
+                                    <a class="dropdown-item user-logged d-none" href="#" onclick="page.loadChangePassword(this)">Cambia Password</a>
+                                    <a class="dropdown-item user-logged d-none" href="#" onclick="page.logout(this)">Disconnetti</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="container-fluid" id="splash-init">
+                    <div class="jumbotron">
+                        <h1 class="display-4">La Mia Porta</h1>
+                        <p class="lead">Inizializzazione Pagina...</p>
+                        <hr class="my-4">
+                        <p class="mb-4"></p>
+                    </div>
+                </div>
+
+                <div class="container-fluid d-none" id="splash">
+                    <div class="jumbotron">
+                        <h1 class="display-4">La Mia Porta</h1>
+                        <p class="lead">Caricamento Pagina...</p>
+                        <hr class="my-4">
+                        <p class="mb-4">Attendi la sincronizzazione con l'hardware...</p>
+                        <div class="progress" style="height: 1rem;">
+                            <div id="progressLoading" class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 0%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-fluid d-none" id="pageDisconnected">
+                    <div class="jumbotron">
+                        <h1 class="display-4">La Mia Porta</h1>
+                        <p class="lead">Pagina disconnessa...</p>
+                        <hr class="my-4">
+                        <p class="mb-4">Attendi la riconnessione...</p>
+                        <button class="btn btn-primary" type="button" disabled>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Ricerca...
+                        </button>
+                    </div>
+                </div>
+                <div class="container-fluid d-none" id="pageContent">
+
+                </div>
+            </div>
+            <!--
+				<footer class="sticky-footer bg-white">
+					<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; Your Website 2019</span>
+					</div>
+					</div>
+				</footer>
+			-->
+        </div>
+    </div>
+    <a class="scroll-to-top rounded" href="#page-top">
+        <!-- <i class="fas fa-angle-up"></i>-->Top
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- form login -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <form name="login">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-primary">Accesso</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Chiudi">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="username">Utente</label>
+                            <input type="text" class="form-control" id="username" />
+                            <span id="username_error" class="help_err"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" />
+                            <span id="password_err" class="help_err"></span>
+                        </div>
+                        <div class="form-group">
+                            <span class="messaggio-errore help_err"></span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!--input type="submit" value="Validate" class="btn btn-secondary" data-dismiss="modal" data-dismiss="modal"-->
+                        <!--
+                        <button class="btn btn-secondary" type="button" onclick="page.active.cancel();">Annulla</button>
+                        -->
+                        <button class="btn btn-primary" type="button" onclick="page.active.dologin()">Accedi</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- form cambio password -->
+    <div class="modal fade" id="passwordModal" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <form name="changePassword">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-primary">Cambio Password</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Chiudi">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" style="display:none;">
+                            <input type="text" class="form-control" id="username" />
+                        </div>
+                        <div class="form-group">
+                            <label for="old-password">Vecchia Password</label>
+                            <input type="text" class="form-control" id="old-password" />
+                            <span id="old-password_error" class="help_err"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Nuova Password</label>
+                            <input type="text" class="form-control" id="new-password" />
+                            <span id="password_error" class="help_err"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="check-password">Verifica Nuova Password</label>
+                            <input type="text" class="form-control" id="check-password" />
+                            <span id="check-password_error" class="help_err"></span>
+                        </div>
+                        <div class="form-group">
+                            <span class="messaggio-errore help_err"></span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!--input type="submit" value="Validate" class="btn btn-secondary" data-dismiss="modal" data-dismiss="modal"-->
+                        <button class="btn btn-secondary" type="button" onclick="page.active.cancel();">Annulla</button>
+                        <button class="btn btn-primary" type="button" onclick="page.active.doChange();">Cambia</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="all.js"></script>
+    <script src="js/site.js?b"></script>
+</body>
+
+</html>
