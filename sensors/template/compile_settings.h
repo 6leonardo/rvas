@@ -33,8 +33,8 @@
 #endif
 
 //raspberry wifi
-#define WIFI_SID "fabriziobox"
-#define WIFI_PWD "laLunaeilSole"
+#define WIFI_SID "xxxxxxxxx"
+#define WIFI_PWD "xxxxxxxxx"
 
 //config wifi
 #define AP_SID "sensor"
