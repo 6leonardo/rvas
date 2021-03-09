@@ -56,7 +56,7 @@ nel file config_settings inserisci wifi ssid e password del raspberry e il nome 
 
 l'esp si accende se trova il raspberry manda i pesi e poi va in deepsleep e si risveglia dopo due minuti
 
-Per accenderlo e fare in modo che avvi l'hotspot premere il pulsante collegato come nello schema seguente, attenzione il condensatore non è da 100nF ma bensi da 100µF
+Per accenderlo e fare in modo che avvi l'hotspot premere il pulsante collegato come nello schema seguente
 
 Se si rimane collegati l'esp rimane acceso mentre se ci si scollega dal web l'esp dopo 5 minuti torna in deepsleep
 

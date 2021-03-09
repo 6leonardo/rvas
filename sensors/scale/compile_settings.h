@@ -35,8 +35,8 @@
 #endif
 
 //raspberry wifi
-#define DEFAULT_WIFI_SID "fabriziobox"
-#define DEFAULT_WIFI_PWD "laLunaeilSole"
+#define DEFAULT_WIFI_SID "camper"
+#define DEFAULT_WIFI_PWD "camper.44"
 
 //config wifi
 #define DEFAULT_AP_SID "sensor"
