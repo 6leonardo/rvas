@@ -1,0 +1,147 @@
+<!-- Page Heading -->
+
+<div style="position:absolute;right:2rem;width:300px;z-index:1020">
+    <div style="width:100%;" id="outputLog">
+    </div>
+</div>
+
+<div class="d-sm-flex justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Scale</h1>
+</div>
+<div class="row align-items-start justify-content-between mb-1 h-100">
+    <div class="col-xl-6 col-md-12 mb-1">
+        <div class="card border-left-danger shadow">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2 scale1">
+                        <div class="font-weight-bold text-primary text-uppercase mb-1 mt-2">
+                            Bilancia Bombola Uno
+                        </div>
+                        <div id="init_1" class="mb-1 h-50 d-none" data-active="no">
+                            <div>
+                                Bilancia da <b>inizializzare</b>, <br> svuota il piatto delle bilancia e premi inizializzare.
+                                <br>&nbsp;
+                            </div>
+                            <div class="mb-1 h-50">
+                                <button class="btn btn-primary" type="button" onclick="page.active.initialize(this,1)">Inizializzare</button>
+                            </div>
+                        </div>
+                        <div id="wait_1" class="mb-1 h-50 d-none" data-active="no">
+                            Aspetta e non fare niente
+                        </div>
+                        <div id="tare_1" class="mb-1 h-50 d-none" data-active="no">
+                            <div>
+                                Metti un peso noto preferibile di qualche Kg. sulla bilancia... <br> Scrivi qui sotto il peso in grammi, poi premi inizializzare<br>&nbsp;
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inp_tare_1">Peso di calibrazione</label>
+                                <input type="text" class="form-control" id="inp_tare_1" value="0" />
+                            </div>
+                            <div class="mb-1 h-50">
+                                <button class="btn btn-primary" type="button" onclick="page.active.calibrate(this,1)">Calibra</button>
+                            </div>
+                        </div>
+                        <div id="weight_1" class="mb-1 h-50 d-none" data-active="no">
+                            <div>
+                                <div class="text-monospace">
+                                    <span id="w1"></span> Kg Peso bombola<br>
+                                    <span id="t1"></span> Kg Peso tara<br>
+                                    <span id="l1"></span> % Livello<br>&nbsp;
+                                </div>
+                                <div class="mb-1 h-50">
+                                    <button class="btn btn-primary" type="button" onclick="page.active.newgas(this,1)">Cambia
+                                        Bombola</button>
+                                </div>
+                                <div class="mb-1 h-50">
+                                    <button class="btn btn-primary" type="button" onclick="page.active.initialize(this,1)">Inizializzare</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="new_1" class="mb-1 h-50 d-none" data-active="no">
+                            <div>
+                                Metti la bombola sul piatto e scrivi 0 come tara <br> Oppure se conosci la tara scrivila qui sotto in gr.<br>&nbsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="inp_gastare_1">Tara</label>
+                                <input type="text" class="form-control" id="inp_gastare_1" value="0" />
+                            </div>
+                            <div class="mb-1 h-50">
+                                <button class="btn btn-primary" type="button" onclick="page.active.gastare(this,1)">Nuova
+                                    Bombola</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6 col-md-12 mb-1">
+        <div class="card border-left-danger shadow">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2 scale2">
+                        <div class="font-weight-bold text-primary text-uppercase mb-1 mt-2">
+                            Bilancia Bombola Due
+                        </div>
+                        <div id="init_2" class="mb-1 h-50 d-none" data-active="no">
+                            <div>
+                                Bilancia da <b>inizializzare</b>, <br> svuota il piatto delle bilancia e premi inizializzare.
+                                <br>&nbsp;
+                            </div>
+                            <div class="mb-2 h-50">
+                                <button class="btn btn-primary" type="button" onclick="page.active.initialize(this,2)">Inizializzare</button>
+                            </div>
+                        </div>
+                        <div id="wait_2" class="mb-1 h-50 d-none" data-active="no">
+                            Aspetta e non fare niente
+                        </div>
+                        <div id="tare_2" class="mb-1 h-50 d-none" data-active="no">
+                            <div>
+                                Metti un peso noto preferibile di qualche Kg. sulla bilancia... <br> Scrivi qui sotto il peso in grammi, poi premi inizializzare<br>&nbsp;
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inp_tare_1">Peso di calibrazione</label>
+                                <input type="text" class="form-control" id="inp_tare_2" value="0" />
+                            </div>
+                            <div class="mb-1 h-50">
+                                <button class="btn btn-primary" type="button" onclick="page.active.calibrate(this,2)">Calibra</button>
+                            </div>
+                        </div>
+                        <div id="weight_2" class="mb-1 h-50 d-none" data-active="no">
+                            <div>
+                                <div class="text-monospace">
+                                    <span id="w1"></span> Kg Peso bombola<br>
+                                    <span id="t1"></span> Kg Peso tara<br>
+                                    <span id="l1"></span>% Livello<br>&nbsp;
+                                </div>
+                                <div class="mb-1 h-50">
+                                    <button class="btn btn-primary" type="button" onclick="page.active.newgas(this,2)">Cambia
+                                        Bombola</button>
+                                </div>
+                                <div class="mb-1 h-50">
+                                    <button class="btn btn-primary" type="button" onclick="page.active.initialize(this,2)">Inizializzare</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="new_2" class="mb-1 h-50 d-none" data-active="no">
+                            <div>
+                                Metti la bombola sul piatto: <br> Se conosci la tara scrivila qui, altrimenti lascia 0
+                                <br>&nbsp;
+                            </div>
+                            <div class="form-group">
+                                <label for="inp_tare_1">Tara</label>
+                                <input type="text" class="form-control" id="inp_tare_1" value="0" />
+                            </div>
+                            <div class="mb-1 h-50">
+                                <button class="btn btn-primary" type="button" onclick="page.active.gastare(this,2)">Nuova
+                                    Bombola</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -12,16 +12,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript>
-        <link rel="stylesheet" href="assets/css/noscript.css" />
-    </noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
     <style>
-        /*
         .table {
-            display: table;
+            /*display: table;
             width: 100%;
-            border-spacing: 5px;	
+            border-spacing: 5px;
+			*/
         }
-        */
         
         .row {
             /*display: table-row;*/
@@ -298,40 +297,31 @@
                             <h4>Air C.</h4>
                             <div class="sw one on" data-name='airc/on' data-proc='sw' data-value='0' onclick="press(this)"><span>Off</span></div>
                             <div class="sw off" data-name='airc/on' data-proc='sw' data-value='1' onclick="press(this)">
-                                <span>Fan</span>
-                            </div>
+                                <span>Fan</span></div>
                             <div class="sw off" data-name='airc/on' data-proc='sw' data-value='2' onclick="press(this)">
-                                <span>Cool</span>
-                            </div>
+                                <span>Cool</span></div>
                             <div class="sw off" data-name='airc/on' data-proc='sw' data-value='3' onclick="press(this)">
-                                <span>Heat</span>
-                            </div>
+                                <span>Heat</span></div>
                             <div class="sw off" data-name='airc/on' data-proc='sw' data-value='4' onclick="press(this)">
-                                <span>Dehum</span>
-                            </div>
+                                <span>Dehum</span></div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col parts">
                             <h4>Fan</h4>
                             <div class="sw off" data-name='fans/1' data-proc='sw' data-value='0' onclick="press(this)">
-                                <span>Up Sx</span>
-                            </div>
+                                <span>Up Sx</span></div>
                             <div class="sw off" data-name='fans/2' data-proc='sw' data-value='0' onclick="press(this)">
-                                <span>Up Dx</span>
-                            </div>
+                                <span>Up Dx</span></div>
                             <div class="sw off" data-name='fans/3' data-proc='sw' data-value='0' onclick="press(this)">
-                                <span>Dwn Sx</span>
-                            </div>
+                                <span>Dwn Sx</span></div>
                             <div class="sw off" data-name='fans/4' data-proc='sw' data-value='0' onclick="press(this)">
-                                <span>Dwn Dx</span>
-                            </div>
+                                <span>Dwn Dx</span></div>
                         </div>
                         <div class="col parts">
                             <h4>Inverter</h4>
                             <div class="sw on" data-name='inverter' data-proc='sw' data-value='0' onclick="press(this)">
-                                <span>220V</span>
-                            </div>
+                                <span>220V</span></div>
                         </div>
                         <div class="col parts">
                             <h4>Light</h4>
@@ -387,7 +377,7 @@
                         <div class="col parts">
                             <h4>Left</h4>
                             <div class="detail">
-                                <span data-name='gas/1/level' data-proc='lbl' data-value='-1000'>-</span> % <br>&nbsp;
+                                <span data-name='gas/1/level' data-proc='lbl' data-value='-1000'>-</span> Kg
                             </div>
                             <div class="level">
                                 <div class="bar gas-fuell" style="height:0px" data-name='gas/1/level' data-proc='bar-g' data-value='-1000'></div>
@@ -397,7 +387,7 @@
                         <div class="col parts">
                             <h4>Right</h4>
                             <div class="detail">
-                                <span data-name='gas/2/level' data-proc='lbl' data-value='-1000'>-</span> %<br>&nbsp;
+                                <span data-name='gas/2/level' data-proc='lbl' data-value='-1000'>-</span> Kg
                             </div>
                             <div class="level">
                                 <div class="bar gas-fuell" style="height:0px" data-name='gas/2/level' data-proc='bar-g' data-value='-1000'></div>
@@ -407,7 +397,7 @@
                         <div class="col parts">
                             <h4>Sensor</h4>
                             <div class="detail">
-                                Loss:<span data-name='sensor/ext/gas/1' data-proc='lbl' data-value='-1000'>-</span><br>&nbsp;
+                                Loss:<span data-name='sensor/ext/gas/1' data-proc='lbl' data-value='-1000'>-</span>
                             </div>
                         </div>
                     </div>
@@ -420,7 +410,7 @@
                         <div class="col parts">
                             <h4>Up</h4>
                             <div class="detail">
-                                Level: <span data-name='water/1/level' data-proc='lbl' data-value='-1000'>-</span>%<br> Temp: <span data-name='water/1/level' data-proc='lbl' data-value='-1000'>-</span>°<br>&nbsp;
+                                Level: <span data-name='water/1/level' data-proc='lbl' data-value='-1000'>-</span>%<br> Temp: <span data-name='water/1/level' data-proc='lbl' data-value='-1000'>-</span>°
                             </div>
                             <div class="level">
                                 <div class="bar h2o-fuell" style="height:0px" data-name='water/1/level' data-proc='bar-w' data-value='-1000'></div>
@@ -430,7 +420,7 @@
                         <div class="col parts">
                             <h4>Down</h4>
                             <div class="detail">
-                                Level: <span data-name='water/2/level' data-proc='lbl' data-value='-1000'>-</span>%<br> Temp: <span data-name='water/2/level' data-proc='lbl' data-value='-1000'>-</span>°<br>&nbsp;
+                                Level: <span data-name='water/2/level' data-proc='lbl' data-value='-1000'>-</span>%<br> Temp: <span data-name='water/2/level' data-proc='lbl' data-value='-1000'>-</span>°
                             </div>
                             <div class="level">
                                 <div class="bar h2o-fuell" style="height:0px" data-name='water/2/level' data-proc='bar-w' data-value='-1000'></div>
@@ -723,12 +713,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                             <div class="field">
                                 <label for="demo-category">Category</label>
                                 <select name="demo-category" id="demo-category">
-                                    <option value="">-</option>
-                                    <option value="1">Manufacturing</option>
-                                    <option value="1">Shipping</option>
-                                    <option value="1">Administration</option>
-                                    <option value="1">Human Resources</option>
-                                </select>
+									<option value="">-</option>
+									<option value="1">Manufacturing</option>
+									<option value="1">Shipping</option>
+									<option value="1">Administration</option>
+									<option value="1">Human Resources</option>
+								</select>
                             </div>
                             <div class="field half">
                                 <input type="radio" id="demo-priority-low" name="demo-priority" checked>
@@ -778,9 +768,10 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
     <script>
         Page = function() {
+            this.db = {};
+            this.lastUpdate = new Date(1970, 1, 1);
 
             this.set_sw_big = function(obj, value) {
                 var src = obj.attr('src');
@@ -814,11 +805,6 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
             }
 
             this.update = function(name, value, write = 1) {
-                if (!(name in this.db))
-                    this.db[name] = {
-                        name: name,
-                        value: null
-                    };
 
                 if (this.db[name].value == value)
                     return;
@@ -830,11 +816,11 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                     obj = $(objs[i]);
                     var data = obj.data();
                     /* fuell
-                        battery 96
-                        gas     178
-                        h2o     149
-        
-                        200x218 75x81 3.75
+                    	battery 96
+                    	gas     178
+                    	h2o     149
+
+                    	200x218 75x81 3.75
                     */
                     switch (data.proc) {
                         case 'sw':
@@ -844,7 +830,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                             obj.html(value.toFixed(2));
                             break;
                         case 'bar-g':
-                            obj.height(value * 0.4746);
+                            obj.height(value * 4.746);
                             break; // /100*(178/3.75))
                         case 'bar-w':
                             obj.height(value * 0.3973);
@@ -874,50 +860,71 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
                 this.db[name].value = value;
             }
 
-            this.write = function(name, value) {
-                this.socket.emit('publish', name, value);
-                this.update(name, value);
+            //lastUpdate?
+            this.updateAll = function(updates) {
+                for (var i = 0; i < updates.length; i++) {
+                    if (!(updates[i].name in this.db)) {
+                        this.db[updates[i].name] = {
+                            name: updates[i].name,
+                            value: null
+                        };
+                    }
+                    if (this.db[updates[i].name].value != updates[i].value)
+                        this.update(updates[i].name, updates[i].value, 0);
+                }
             }
 
-            this.setup = function() {
-                var page = this;
-                this.db = {};
-                this.socket = io('http://' + location.hostname + (location.port ? ':' + location.port : ''), {
-                    'reconnect': true,
-                    reconnection: true,
-                    reconnectionDelay: 1000,
-                    reconnectionDelayMax: 5000,
-                    timeout: 1000
-                });
+            this.query = function() {
+                var lu = this.lastUpdate;
 
-                this.socket.on('connect', function() {
-                    console.log('connected');
-                    page.socket.emit('start');
-                });
-                this.socket.on('reconnect', function(nr) {
-                    console.log('reconnected, nr: ', nr);
-                });
-                this.socket.on('disconnect', function() {
-                    console.log('disconnected');
-                });
-                this.socket.on('publish', (topic, message) => {
-                    try {
-                        page.update(topic, message, 0);
-                    } catch (e) {
-                        console.log(e);
+                $.ajax({
+                    url: "/get_by_time",
+                    method: "get",
+                    data: {
+                        time: lu,
+                    },
+                    /*xhrFields:{withCredentials:true},*/
+                    error: ajaxError,
+                    success: function(result, status, xhr) {
+                        //result {result:...,status:....}
+                        result = result.result;
+                        page.lastUpdate = new Date(result.time);
+                        page.updateAll(result.measures);
                     }
                 });
             }
+            this.write = function(name, value) {
+                var page = this;
+                $.ajax({
+                    url: "/add",
+                    method: "get",
+                    data: {
+                        name: name,
+                        value: value
+                    },
+                    /*xhrFields:{withCredentials:true},*/
+                    error: ajaxError,
+                    success: function(result, status, xhr) {
+                        page.update(name, value);
+                    }
+                });
 
-            this.setup();
+            }
+            this.start = function() {
+                var page = this;
+                setInterval(function() {
+                    page.query();
+                }, 2000);
+            }
         }
 
         var page = new Page();
-        /*
+        page.start();
+
         function ajaxError(xhr, status, error) {
             console.log(error);
         }
-        */
+
         function press(o) {
             var obj = $(o);
             var data = obj.data();
