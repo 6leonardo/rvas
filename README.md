@@ -83,7 +83,10 @@ Per il deepsleep è necessario che il pin **RST** sia collegato al **D0** come s
 
 ![loadcell-2](https://github.com/6leonardo/rvas/blob/master/images/loadCell-2.jpg?raw=true)
 
-![loadcell-3](https://github.com/6leonardo/rvas/blob/master/images/loadCell-3.png?raw=true)
+
+## Collegamento pulsante e reset per Deep Sleep
+
+![loadcell-3](https://github.com/6leonardo/rvas/blob/master/images/pulsante.png?raw=true)
 
 
 
