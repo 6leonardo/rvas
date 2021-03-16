@@ -103,5 +103,6 @@ Nell cartella è presente anche la libreria Adafruit che ho modificato per perme
 
 Il calcolo delle resistenza di shunt si vede dalle specifiche, ad esempio una shunt di 80mV per 150A ha una resistenza di 0.08/150=0.0005333Ω
 
+Il programma non pubblica ancora i valori su mqtt perche sto pensando di eliminare gli slaves e leggere tutto da RPi ... comunque sono gia presenti le chiamate è facilmente si puo modificare il sorgente per fare in modo che pubblichi tutte le variabili su MQTT
 
 
