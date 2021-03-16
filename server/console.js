@@ -48,7 +48,7 @@ class Console {
         }
     }
 
-    update(name,message) {
+    update(name, message) {
         if (!this.started)
             return;
 
@@ -75,7 +75,14 @@ class Console {
                 term.moveTo(32, cmd.screen.index + this.first);
                 term(cmd.online == 1 ? "o" : cmd.online == 2 ? "s" : " ");
                 term.moveTo(34, cmd.screen.index + this.first);
-                term("" + cmd.getValue(2) + " ");
+                if (cmd.type == 4) {
+                    var obj = cmd.getValue();
+                    var val = "";
+                    for (const [name, command] of Object.entries(obj))
+                        val += name + ","
+                    term("" + val + "            ");
+                } else
+                    term("" + cmd.getValue(2) + " ");
                 term.moveTo(50, cmd.screen.index + this.first);
                 //term(new Date(el.update_time).toLocaleTimeString() + "  ")
                 term(new Date(cmd.at).toLocaleTimeString() + "    ");
@@ -100,7 +107,7 @@ class Console {
             if (!this.started)
                 return;
             term.white.bgBlack();
-            this.logs[this.i_log] = (new Date()).toLocaleTimeString()+" "+text;
+            this.logs[this.i_log] = (new Date()).toLocaleTimeString() + " " + text;
             for (var i = 0; i < this.n_log; i++) {
                 var index = ((this.n_log + this.i_log - i) % this.n_log);
                 term.moveTo(1, this.last + 1 + i);

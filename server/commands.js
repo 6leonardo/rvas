@@ -41,8 +41,9 @@ var commands = [
     new Command('fans/3', 1, true, Automation.prototype.normalDigital, { GPO: [18], safe: 0 }),
     new Command('fans/4', 1, true, Automation.prototype.normalDigital, { GPO: [23], safe: 0 }),
     new Command('gas/wakeup', 3, true, false, { safe: "" }),
-    new Command('slave/url/open', 3, false, null, { safe: "" }),
-    new Command('slave/url/close', 3, false, null, { safe: "" })
+    new Command('slave/url/open', 3, false, Automation.prototype.addSlave, { safe: "" }),
+    new Command('slave/url/close', 3, false, Automation.prototype.removeSlave, { safe: "" }),
+    new Command("slaves", 4, true, null, { safe: {} })
 ]
 
 module.exports = commands

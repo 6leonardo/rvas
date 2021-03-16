@@ -41,6 +41,7 @@ class Command {
     shutdown() {
         if (this.opts && 'safe' in this.opts) {
             this.value = this.opts.safe;
+            this.rawValue = "" + this.value;
             if (this.opts.GPO && this.opts.GPO instanceof Array)
                 this.opts.GPO[0].writeSync(this.value);
         }
@@ -58,6 +59,7 @@ class Command {
                     return parseFloat(this.value).toFixed(fixed);
                 return parseFloat(this.value);
             case 3:
+            case 4:
                 return this.value;
         }
 
@@ -77,6 +79,7 @@ class Command {
                     this.value = parseFloat(value);
                     return true;
                 case 3:
+                case 4:
                     this.value = value;
                     return true;
             }

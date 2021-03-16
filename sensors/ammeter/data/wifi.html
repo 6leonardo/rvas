@@ -1,0 +1,70 @@
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+	<h1 class="h3 mb-0 text-gray-800">Wifi Settings</h1>
+</div>
+
+<div class="row">
+
+	<div class="col-xl-6 col-md-6 mb-4">
+		<div class="card border-left-primary shadow h-100 py-2">
+			<div class="card-body">
+				<div class="row no-gutters align-items-center">
+					<div class="col mr-2">
+						<div class="font-weight-bold text-primary text-uppercase mb-1">Choose WIFI networks</div>
+						<div class="mb-2"><a class="btn btn-primary" href="#" onclick="page.active.scan();">
+								<span>Scan</span>
+							</a>
+						</div>
+						<div class="mb-0">
+							<table class="table table-striped">
+								<thead class="thead-dark">
+									<tr>
+										<th scope="col">SSID</th>
+										<th scope="col">Ch</th>
+										<th scope="col">dBm</th>
+										<th scope="col">Encryption</th>
+										<th scope="col">Action</th>
+									</tr>
+								</thead>
+								<tbody id="wrows">
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="wifiModal" tabindex="-1" role="dialog" aria-labelledby="Lampadina" aria-hidden="true"
+	data-id="0">
+	<div class="modal-dialog" role="document">
+
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title text-primary" id="LampadaTitle">Set default network</h5>
+				<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label for="thessid">SSID</label>
+					<input type="text" class="form-control" id="thessid" />
+					<span id="thessid_err"></span>
+				</div>
+				<div class="form-group">
+					<label for="thepassword">Pass Key</label>
+					<input type="text" class="form-control" id="thepassword" />
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+				<button class="btn btn-primary" type="button" onclick="page.active.saveWIFI()">Save</button>
+				<!--data-dismiss="modal"-->
+			</div>
+		</div>
+	</div>
+</div>

@@ -125,7 +125,7 @@ var commands = [{ name: 'water/1/level', onchange: null },
     { name: 'fans/3', onchange: Automation.prototype.normalDigital, opts: { GPO: [18], safe: 0 } },
     { name: 'fans/4', onchange: Automation.prototype.normalDigital, opts: { GPO: [23], safe: 0 } },
     { name: 'sensor/ext/gas/1', onchange: null },
-    { name: 'sensor/int/gas/1', onchange: null }
+    { name: 'sensor/int/gas/1', onchange: null },
 ];
 
 class LiveDB {
@@ -405,7 +405,7 @@ class Console {
             term.white.bgBlack();
             this.logs[this.i_log] = text;
             for (var i = 0; i < this.n_log; i++) {
-                var index = ((this.n_log+this.i_log - i) % this.n_log);
+                var index = ((this.n_log + this.i_log - i) % this.n_log);
                 term.moveTo(1, this.last + 1 + i);
                 term.eraseLine();
                 term.moveTo(1, this.last + 1 + i);

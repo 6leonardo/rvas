@@ -78,8 +78,31 @@ class Automation {
         }
     }
 
+    getCommand(name) {
+        if (name in this.index)
+            return this.commands[this.index[name]];
+        return null;
+    }
+
     normalDigital(command) {
         command.opts.GPO[0].writeSync(parseInt(command.getValue()));
+    }
+
+    addSlave(command) {
+        var slave = this.getCommand("slaves");
+        if (command.rawValue != "" && slave) {
+            var which = command.rawValue.split(' ');
+            if (which.length == 2)
+                slave.value[which[0]] = which[1];
+        }
+    }
+
+    removeSlave(command) {
+        var slave = this.getCommand("slaves");
+        if (command.rawValue != "" && slave) {
+            var which = command.rawValue;
+            delete slave.value[which];
+        }
     }
 
 };
