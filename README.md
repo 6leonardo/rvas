@@ -89,5 +89,19 @@ Per il deepsleep è necessario che il pin **RST** sia collegato al **D0** come s
 ![loadcell-3](https://github.com/6leonardo/rvas/blob/master/images/pulsante.png?raw=true)
 
 
+## Consumi energetici
+
+Nella cartella sensors/ammeter si trova il sorgente per utilizzare un esp8266 per leggere i consumi energetici di 5 sorgenti di corrente.
+
+Al fine di poter leggere i consumi energetici di corrente e potenza e anche le tensioni dei 5 generatori (per me tre batterie, un pannello solare e la corrente dell'alternatore) ho utilizzato 5 INA219 i quali possono avere solo 4 indirizzi i2c quindi ho untilizzato un muliplexer i2c, TCA9548A che permette di collegare fino a 8 periferiche i2c allo stesso bus.
+
+I collegamenti sono molto semplici, basta collegare ESP8266 al TCA9548A e quindi tutti gli INA219 alle uscite del TCA9548A e le relative alimentazioni.
+
+Importante è sapeere che gli INA219 hanno gia una resistenza tra V* e V- di 0.1Ω e che quindi se si utilizzano gli shunt occorre dissaldare dalle schedine INA219 la resitenza di 0.1Ω e collegare V+ e V- ai due capi dello shunt e per leggere la tensione di alimentazione e calcolare correttamente la potenza occorre mettere lo shunt sul positivo.
+
+Nell cartella è presente anche la libreria Adafruit che ho modificato per permettere di configure gli INA219 con i corretti valori di shunt, e correnti.
+
+Il calcolo delle resistenza di shunt si vede dalle specifiche, ad esempio una shunt di 80mV per 150A ha una resistenza di 0.08/150=0.0005333Ω
+
 
 
