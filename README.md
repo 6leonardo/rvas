@@ -105,4 +105,5 @@ Il calcolo delle resistenza di shunt si vede dalle specifiche, ad esempio una sh
 
 Il programma non pubblica ancora i valori su mqtt perche sto pensando di eliminare gli slaves e leggere tutto da RPi ... comunque sono gia presenti le chiamate è facilmente si puo modificare il sorgente per fare in modo che pubblichi tutte le variabili su MQTT
 
+![consumi](https://github.com/6leonardo/rvas/blob/master/images/consumi.png?raw=true)
 
