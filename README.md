@@ -29,7 +29,7 @@ then execute
 
 sudo node index.js 80 2
 
-![index](https://github.com/6leonardo/rvas/blob/master/images/index.png?raw=true)
+![index](https://github.com/6leonardo/rvas/blob/master/images/index.gif?raw=true)
 
 you can remove the use of sudo with the following commands
 
